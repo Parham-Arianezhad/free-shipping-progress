@@ -20,3 +20,9 @@ if (!defined('ABSPATH')) {
 define('FSP_PATH', plugin_dir_path(__FILE__));
 define('FSP_URL', plugin_dir_url(__FILE__));
 define('FSP_VERSION', '1.0.0');
+
+require_once FSP_PATH . 'includes/class-plugin.php';
+
+
+require_once FSP_PATH . 'public/class-display.php';
+new FSP_Display();
