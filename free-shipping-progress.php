@@ -26,3 +26,6 @@ require_once FSP_PATH . 'includes/class-plugin.php';
 
 require_once FSP_PATH . 'public/class-display.php';
 new FSP_Display();
+
+require_once FSP_PATH . 'includes/class-fsp-admin.php';
+new FSP_Admin();

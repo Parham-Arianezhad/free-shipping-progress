@@ -2,18 +2,22 @@
     width: 100%;
     margin: 10px 0;
     font-family: sans-serif;
+    padding: 24px;
+    border-radius: 18px;
+    border: #dfdfdf solid 1px;
 }
 
-.fsp-progress-container p {
+.fsp-progress-container {
     margin-bottom: 5px;
-    font-size: 14px;
-    font-weight: bold;
+    font-family: inherit;
+    font-size: 18px;
     color: #333;
 }
 
 .fsp-progress-wrapper {
     background: #eee;
     border-radius: 10px;
+    margin: 4px 0 0 0;
     overflow: hidden;
     height: 20px;
     width: 100%;
@@ -23,13 +27,6 @@
 .fsp-progress-bar {
     height: 100%;
     border-radius: 10px;
-    background: repeating-linear-gradient(
-        45deg,
-        #8e2de2,
-        #8e2de2 10px,
-        #b97cee 10px,
-        #b97cee 20px
-    );
     position: relative;
     overflow: hidden;
 }
@@ -39,13 +36,13 @@
     position: absolute;
     top: 0;
     left: -50%;
-    width: 50%;
+    width: 55%;
     height: 100%;
     background: linear-gradient(
         120deg,
-        rgba(255, 255, 255, 0.055) 0%,
-        rgba(255,255,255,0.4) 50%,
-        rgba(255, 255, 255, 0.055) 100%
+        rgba(255, 255, 255, 0.033) 0%,
+        rgba(255,255,255,0.25) 50%,
+        rgba(255, 255, 255, 0.033) 100%
     );
     transform: skewX(-20deg);
     animation: shine 2s infinite linear;

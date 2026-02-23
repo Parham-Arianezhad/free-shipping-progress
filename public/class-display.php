@@ -12,7 +12,7 @@ class FSP_Display
 
     function fsp_enqueue_styles()
     {
-        wp_enqueue_style('enqueue-progress-stylexx', FSP_URL."/assets/progress.css" );
+        wp_enqueue_style('enqueue-progress-style', FSP_URL."/assets/progress.css" );
     }
     public function render_progress_bar()
     {
@@ -21,20 +21,27 @@ class FSP_Display
             return 'test';
         }
 
-        $free_shipping = 500000;
+        $settings = get_option('fsp_settings');
+
+        $color = isset($settings['color']) ? $settings['color'] : '#8e2de2';
+        $text = isset($settings['text']) ? $settings['text'] : 'Amount left for free shipping:';
+        $amount = isset($settings['amount']) ? intval($settings['amount']) : 100;
+        $notice = isset($settings['notice_text']) ? $settings['notice_text'] : 'Free shipping activated🎉';
+
+
         $cart_total = WC()->cart->total;
 
-        $remaining = $free_shipping - $cart_total;
-        $percent = min(100, ($cart_total / $free_shipping) * 100);
+        $remaining = $amount - $cart_total;
+        $percent = min(100, ($cart_total / $amount) * 100);
 
         if ($remaining > 0) {
-            $text = " فقط" . wc_price($remaining) . "تا ارسال رایگان!";
+            $text = $text . wc_price($remaining);
         } else {
-            $text = "ارسال رایگان فعال شد 🎉";
+            $text = $notice;
         }
 
         $progress_html = '<div class="fsp-progress-wrapper">';
-        $progress_html .= '<div class="fsp-progress-bar" style="width:' . $percent . '%;"></div>';
+        $progress_html .= '<div class="fsp-progress-bar" style="width: ' . $percent . '%; background: ' . esc_attr($color) . ';"></div>';
         $progress_html .= '</div>';
 
         return '<div class="fsp-progress-container">' . $text . $progress_html . '</div>';
