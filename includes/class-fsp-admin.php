@@ -36,10 +36,11 @@ class FSP_Admin
         $settings = get_option('fsp_settings');
 
         $color = isset($settings['color']) ? $settings['color'] : '#8e2de2';
-        $text = isset($settings['text']) ? $settings['text'] : 'Amount left for free shipping:';
-        $notice = isset($settings['notice_text']) ? $settings['notice_text'] : 'Free shipping activated🎉';
-        $amount = isset($settings['amount']) ? intval($settings['amount']) : 100;
-        
+        $text = !empty($settings['text']) ? $settings['text'] : 'Amount left for free shipping:';
+        $notice = !empty($settings['notice_text']) ? $settings['notice_text'] : 'Free shipping activated🎉';
+        $amount = !empty($settings['amount']) ? intval($settings['amount']) : 100;
+        $align = isset($settings['align']) ?$settings['align'] : 'left';
+
         ?>
 
         <div class="wrap">
@@ -78,6 +79,19 @@ class FSP_Admin
                         <th>Free Shipping Amount</th>
                         <td>
                             <input type="number" name="fsp_settings[amount]" value="<?php echo esc_attr($amount); ?>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Text Align</th>
+                        <td>
+                            <select name="fsp_settings[align]">
+
+                                <option value="right" <?php selected($align, 'right'); ?>>Right</option>
+                                <option value="left" <?php selected($align, 'left'); ?>>Left</option>
+                                <option value="center" <?php selected($align, 'center'); ?>>Center</option>
+
+                            </select>
+
                         </td>
                     </tr>
 
