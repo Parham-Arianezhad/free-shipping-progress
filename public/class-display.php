@@ -18,7 +18,7 @@ class FSP_Display
     {
 
         if (!function_exists('WC') || !WC()->cart) {
-            return 'test';
+            return 'You still haven’t installed the WooCommerce plugin';
         }
 
         $settings = get_option('fsp_settings');
